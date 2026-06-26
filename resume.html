@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Mustufa Khan — Resume</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;font-size:13px;color:#1a1a2e;background:#fff;line-height:1.5}
+
+  /* Print: A4 page */
+  @media print{
+    body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .no-print{display:none}
+    .page{box-shadow:none;margin:0;border-radius:0}
+  }
+  @page{size:A4;margin:0}
+
+  /* Print button */
+  .no-print{position:fixed;top:20px;right:20px;z-index:999;display:flex;gap:10px}
+  .no-print button{padding:10px 20px;border:none;border-radius:8px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;font-size:13px}
+  .btn-print{background:linear-gradient(135deg,#6366f1,#06b6d4);color:#fff}
+  .btn-dl{background:#f1f5f9;color:#1a1a2e}
+
+  /* Page */
+  .page{max-width:794px;min-height:1123px;margin:20px auto;background:#fff;box-shadow:0 4px 40px rgba(0,0,0,.12);display:flex}
+
+  /* LEFT SIDEBAR */
+  .sidebar{width:240px;flex-shrink:0;background:linear-gradient(180deg,#0f0f1a 0%,#1a1a3e 100%);color:#fff;padding:36px 24px;display:flex;flex-direction:column;gap:28px}
+  .s-name{font-size:18px;font-weight:700;line-height:1.3;background:linear-gradient(135deg,#a5b4fc,#67e8f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .s-title{font-size:10px;color:#94a3b8;letter-spacing:1.5px;text-transform:uppercase;margin-top:4px}
+  .s-avatar{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,rgba(99,102,241,.4),rgba(6,182,212,.3));display:flex;align-items:center;justify-content:center;font-size:36px;border:2px solid rgba(99,102,241,.4);margin-bottom:4px}
+
+  .s-section{display:flex;flex-direction:column;gap:10px}
+  .s-section-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#6366f1;font-weight:600;padding-bottom:6px;border-bottom:1px solid rgba(99,102,241,.3)}
+  .s-item{display:flex;align-items:flex-start;gap:8px;font-size:11px;color:#cbd5e1}
+  .s-item i{color:#6366f1;margin-top:1px;width:12px;flex-shrink:0}
+  .s-skill-wrap{display:flex;flex-wrap:wrap;gap:5px}
+  .s-skill{padding:3px 8px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.25);border-radius:4px;font-size:10px;color:#a5b4fc}
+  .s-skill.cyan{background:rgba(6,182,212,.12);border-color:rgba(6,182,212,.25);color:#67e8f9}
+  .s-skill.green{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.25);color:#6ee7b7}
+  .s-skill.purple{background:rgba(168,85,247,.12);border-color:rgba(168,85,247,.25);color:#d8b4fe}
+  .s-lang{display:flex;flex-direction:column;gap:8px}
+  .s-lang-item{display:flex;flex-direction:column;gap:3px}
+  .s-lang-name{font-size:11px;color:#e2e8f0;font-weight:500}
+  .s-lang-bar{height:3px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
+  .s-lang-fill{height:100%;border-radius:2px}
+
+  /* MAIN CONTENT */
+  .main{flex:1;padding:36px 32px;display:flex;flex-direction:column;gap:24px;overflow:hidden}
+  .m-section{display:flex;flex-direction:column;gap:12px}
+  .m-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#6366f1;padding-bottom:6px;border-bottom:2px solid #e0e7ff}
+
+  /* Experience */
+  .exp-item{display:flex;flex-direction:column;gap:4px;padding-left:12px;border-left:2px solid #e0e7ff;position:relative}
+  .exp-item::before{content:'';position:absolute;left:-5px;top:4px;width:8px;height:8px;border-radius:50%;background:#6366f1}
+  .exp-item.live::before{background:#10b981}
+  .exp-role{font-size:13px;font-weight:600;color:#1a1a2e}
+  .exp-meta{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px}
+  .exp-company{font-size:11px;color:#6366f1;font-weight:500}
+  .exp-date{font-size:10px;color:#94a3b8;background:#f1f5f9;padding:2px 8px;border-radius:4px}
+  .exp-list{list-style:none;display:flex;flex-direction:column;gap:2px;margin-top:4px}
+  .exp-list li{font-size:11px;color:#475569;padding-left:12px;position:relative}
+  .exp-list li::before{content:'▸';position:absolute;left:0;color:#6366f1;font-size:10px}
+
+  /* Projects */
+  .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .proj-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 12px;border-left:3px solid #6366f1}
+  .proj-name{font-size:12px;font-weight:600;color:#1a1a2e;margin-bottom:2px}
+  .proj-desc{font-size:10px;color:#64748b;line-height:1.5;margin-bottom:5px}
+  .proj-tags{display:flex;flex-wrap:wrap;gap:3px}
+  .proj-tag{padding:1px 6px;background:#ede9fe;color:#6366f1;border-radius:3px;font-size:9px;font-weight:500}
+
+  /* Education */
+  .edu-item{display:flex;justify-content:space-between;align-items:flex-start;padding:10px 12px;background:#f8fafc;border-radius:8px;border-left:3px solid #06b6d4}
+  .edu-deg{font-size:12px;font-weight:600;color:#1a1a2e}
+  .edu-field{font-size:11px;color:#06b6d4;margin-top:1px}
+  .edu-school{font-size:10px;color:#64748b;margin-top:2px}
+  .edu-yr{font-size:10px;color:#94a3b8;background:#f1f5f9;padding:2px 8px;border-radius:4px;white-space:nowrap}
+
+  /* Summary */
+  .summary{font-size:12px;color:#475569;line-height:1.7;padding:12px 14px;background:#f8faff;border-radius:8px;border-left:3px solid #6366f1}
+</style>
+</head>
+<body>
+
+<!-- Print Controls -->
+<div class="no-print">
+  <button class="btn-dl" onclick="window.print()">🖨️ Print / Save as PDF</button>
+</div>
+
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div>
+      <div class="s-avatar">🤖</div>
+      <div class="s-name">Muhammad Mustufa Khan</div>
+      <div class="s-title">AI & Shopify Developer</div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-section-title">Contact</div>
+      <div class="s-item"><i class="fas fa-envelope" style="font-size:10px"></i><span>mustufakhan0318@gmail.com</span></div>
+      <div class="s-item"><i class="fas fa-phone" style="font-size:10px"></i><span>+92 318 2255708</span></div>
+      <div class="s-item"><i class="fas fa-map-marker-alt" style="font-size:10px"></i><span>Karachi, Pakistan</span></div>
+      <div class="s-item"><i class="fab fa-linkedin" style="font-size:10px"></i><span>mustufa-khan-87346b333</span></div>
+      <div class="s-item"><i class="fab fa-github" style="font-size:10px"></i><span>M-Mustufa-Khan</span></div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-section-title">Shopify</div>
+      <div class="s-skill-wrap">
+        <span class="s-skill">Liquid</span>
+        <span class="s-skill">Theme Dev</span>
+        <span class="s-skill">Store Setup</span>
+        <span class="s-skill">Shopify APIs</span>
+      </div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-section-title">AI & Automation</div>
+      <div class="s-skill-wrap">
+        <span class="s-skill cyan">n8n</span>
+        <span class="s-skill cyan">OpenAI</span>
+        <span class="s-skill cyan">Claude</span>
+        <span class="s-skill cyan">RAG</span>
+        <span class="s-skill cyan">Pinecone</span>
+        <span class="s-skill cyan">Webhooks</span>
+      </div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-section-title">Voice AI</div>
+      <div class="s-skill-wrap">
+        <span class="s-skill green">Vapi</span>
+        <span class="s-skill green">Retell AI</span>
+        <span class="s-skill green">ElevenLabs</span>
+      </div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-section-title">Frontend</div>
+      <div class="s-skill-wrap">
+        <span class="s-skill purple">HTML5</span>
+        <span class="s-skill purple">CSS3</span>
+        <span class="s-skill purple">JavaScript</span>
+        <span class="s-skill purple">React</span>
+        <span class="s-skill purple">Bootstrap</span>
+      </div>
+    </div>
+
+    <div class="s-section">
+      <div class="s-section-title">Languages</div>
+      <div class="s-lang">
+        <div class="s-lang-item">
+          <div class="s-lang-name">English</div>
+          <div class="s-lang-bar"><div class="s-lang-fill" style="width:85%;background:linear-gradient(90deg,#6366f1,#06b6d4)"></div></div>
+        </div>
+        <div class="s-lang-item">
+          <div class="s-lang-name">Urdu</div>
+          <div class="s-lang-bar"><div class="s-lang-fill" style="width:100%;background:linear-gradient(90deg,#10b981,#06b6d4)"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- Summary -->
+    <div class="m-section">
+      <div class="m-title">Professional Summary</div>
+      <div class="summary">
+        Software developer specializing in AI automation, Shopify development, and Voice AI systems.
+        Experienced in building n8n workflows, RAG systems, AI voice agents (Vapi, Retell AI), and
+        custom Shopify storefronts. Passionate about solving real-world business problems through
+        intelligent automation and modern web technologies.
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="m-section">
+      <div class="m-title">Experience</div>
+
+      <div class="exp-item live">
+        <div class="exp-role">Shopify Developer · AI Automation Specialist · Voice AI Developer</div>
+        <div class="exp-meta">
+          <span class="exp-company">Revera Innovations</span>
+          <span class="exp-date">July 2025 – Present</span>
+        </div>
+        <ul class="exp-list">
+          <li>Built custom Shopify themes using Liquid; optimized store performance and mobile UX</li>
+          <li>Developed n8n automation workflows integrating OpenAI, CRMs, and Shopify APIs</li>
+          <li>Created AI Voice Agents for businesses using Vapi and Retell AI with ElevenLabs voices</li>
+          <li>Built RAG system over Google Drive using Pinecone vector DB and OpenAI embeddings</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-role">IT Department Intern</div>
+        <div class="exp-meta">
+          <span class="exp-company">Engineering Pakistan International Pvt Ltd</span>
+          <span class="exp-date">Mar 2024 – Jun 2025</span>
+        </div>
+        <ul class="exp-list">
+          <li>IT troubleshooting, user support, cloud storage management and office networking</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="m-section">
+      <div class="m-title">Featured Projects</div>
+      <div class="proj-grid">
+
+        <div class="proj-item">
+          <div class="proj-name">💍 Elegant Celebrations</div>
+          <div class="proj-desc">Wedding hall booking platform with admin dashboard, authentication and reservation management.</div>
+          <div class="proj-tags">
+            <span class="proj-tag">ASP.NET</span><span class="proj-tag">React</span><span class="proj-tag">SQL Server</span>
+          </div>
+        </div>
+
+        <div class="proj-item" style="border-left-color:#06b6d4">
+          <div class="proj-name">🤖 Shopify AI Agent</div>
+          <div class="proj-desc">AI assistant integrating OpenAI + Shopify APIs + Telegram via n8n for automated store management.</div>
+          <div class="proj-tags">
+            <span class="proj-tag" style="background:#e0f2fe;color:#0891b2">n8n</span><span class="proj-tag" style="background:#e0f2fe;color:#0891b2">OpenAI</span><span class="proj-tag" style="background:#e0f2fe;color:#0891b2">Telegram</span>
+          </div>
+        </div>
+
+        <div class="proj-item" style="border-left-color:#10b981">
+          <div class="proj-name">🎙️ Dental Clinic Voice Agent</div>
+          <div class="proj-desc">24/7 AI receptionist for appointment booking and FAQ handling using Vapi and ElevenLabs.</div>
+          <div class="proj-tags">
+            <span class="proj-tag" style="background:#d1fae5;color:#059669">Vapi</span><span class="proj-tag" style="background:#d1fae5;color:#059669">Retell AI</span><span class="proj-tag" style="background:#d1fae5;color:#059669">ElevenLabs</span>
+          </div>
+        </div>
+
+        <div class="proj-item" style="border-left-color:#a855f7">
+          <div class="proj-name">🧠 RAG AI Agent</div>
+          <div class="proj-desc">Retrieval-Augmented Generation system searching Google Drive docs via Pinecone vector DB.</div>
+          <div class="proj-tags">
+            <span class="proj-tag" style="background:#f3e8ff;color:#9333ea">Pinecone</span><span class="proj-tag" style="background:#f3e8ff;color:#9333ea">OpenAI</span><span class="proj-tag" style="background:#f3e8ff;color:#9333ea">n8n</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="m-section">
+      <div class="m-title">Education</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="edu-item">
+          <div>
+            <div class="edu-deg">Diploma of Associate Engineering</div>
+            <div class="edu-field">Software Engineering</div>
+            <div class="edu-school">Aligarh Institute of Technology</div>
+          </div>
+          <span class="edu-yr">2023 – 2026</span>
+        </div>
+        <div class="edu-item">
+          <div>
+            <div class="edu-deg">Matriculation</div>
+            <div class="edu-field">Computer Science</div>
+            <div class="edu-school">Sir Syed Children Academy</div>
+          </div>
+          <span class="edu-yr">2020 – 2022</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</body>
+</html>

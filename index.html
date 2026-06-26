@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Muhammad Mustufa Khan - AI Developer, Shopify Expert, Voice AI Developer based in Karachi, Pakistan">
+<title>Muhammad Mustufa Khan | AI & Shopify Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --bg:#050510;--bg2:#080818;--bg3:rgba(255,255,255,0.04);
+  --p:#6366f1;--s:#06b6d4;--a:#10b981;--sh:#96bf48;--w:#f59e0b;--vp:#a855f7;--r:#ef4444;
+  --t1:#fff;--t2:#94a3b8;--t3:#64748b;
+  --border:rgba(99,102,241,0.2);--glass:rgba(255,255,255,0.04);--gb:rgba(255,255,255,0.08);
+  --gp:0 0 40px rgba(99,102,241,0.25);--gs:0 0 40px rgba(6,182,212,0.25);
+  --fh:'Orbitron',sans-serif;--fb:'Space Grotesk',sans-serif;--fm:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t1);font-family:var(--fb);overflow-x:hidden;line-height:1.6}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--p);border-radius:3px}
+::selection{background:rgba(99,102,241,0.3)}
+
+/* LOADER */
+#loader{position:fixed;inset:0;background:var(--bg);z-index:99999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;transition:opacity .6s,visibility .6s}
+#loader.gone{opacity:0;visibility:hidden;pointer-events:none}
+.ld-logo{font-family:var(--fh);font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--p),var(--s));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ld-bar{width:220px;height:3px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden}
+.ld-fill{height:100%;width:0;background:linear-gradient(90deg,var(--p),var(--s));border-radius:2px;animation:ldbar 1.6s ease forwards}
+.ld-txt{font-family:var(--fm);font-size:.75rem;color:var(--t3)}
+@keyframes ldbar{to{width:100%}}
+
+/* CURSOR */
+#cur{width:22px;height:22px;border:2px solid var(--p);border-radius:50%;position:fixed;pointer-events:none;z-index:99998;transition:transform .15s,border-color .3s;mix-blend-mode:difference;will-change:transform}
+#cur-dot{width:5px;height:5px;background:var(--p);border-radius:50%;position:fixed;pointer-events:none;z-index:99998;will-change:transform}
+#cur.hover{transform:scale(2);border-color:var(--s)}
+@media(max-width:768px){#cur,#cur-dot{display:none}}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:all .3s}
+nav.scrolled{background:rgba(5,5,16,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--fh);font-size:1.3rem;font-weight:900;background:linear-gradient(135deg,var(--p),var(--s));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:2px}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--t2);text-decoration:none;font-size:.88rem;font-weight:500;letter-spacing:.5px;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--p),var(--s));transition:width .3s}
+.nav-links a:hover{color:var(--t1)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{padding:.5rem 1.4rem;background:linear-gradient(135deg,var(--p),var(--s));border:none;border-radius:50px;color:#fff;font-family:var(--fb);font-weight:600;font-size:.88rem;cursor:pointer;text-decoration:none;transition:all .3s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(99,102,241,.4)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:10}
+.hamburger span{width:24px;height:2px;background:var(--t1);transition:all .3s;display:block}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* MOBILE MENU */
+.mob-menu{display:none;position:fixed;inset:0;background:rgba(5,5,16,.97);backdrop-filter:blur(20px);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:var(--fh);font-size:1.4rem;color:var(--t1);text-decoration:none;transition:color .3s}
+.mob-menu a:hover{color:var(--p)}
+
+/* HERO */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#cv{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.hero-inner{position:relative;z-index:2;text-align:center;padding:2rem;max-width:900px}
+.hero-badge{display:inline-flex;align-items:center;gap:.6rem;padding:.4rem 1.1rem;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.25);border-radius:50px;font-size:.78rem;color:var(--s);margin-bottom:1.8rem;font-family:var(--fm)}
+.badge-dot{width:8px;height:8px;background:var(--a);border-radius:50%;animation:bpulse 2s infinite}
+@keyframes bpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.hero-name{font-family:var(--fh);font-size:clamp(2.2rem,5.5vw,4.5rem);font-weight:900;line-height:1.1;margin-bottom:1rem;background:linear-gradient(135deg,#fff 0%,#c7d2fe 50%,#67e8f9 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-subtitle{font-size:clamp(1.1rem,2.5vw,1.6rem);margin-bottom:1.5rem;color:var(--t2);min-height:2.5rem}
+.typed-accent{color:var(--s);font-weight:700}
+.hero-desc{font-size:1.05rem;color:var(--t2);max-width:640px;margin:0 auto 2.5rem;line-height:1.85}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-p{padding:.9rem 2rem;background:linear-gradient(135deg,var(--p),var(--s));border:none;border-radius:50px;color:#fff;font-family:var(--fb);font-weight:600;font-size:.95rem;cursor:pointer;text-decoration:none;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem;position:relative;overflow:hidden}
+.btn-p::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);transition:left .5s}
+.btn-p:hover::before{left:100%}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(99,102,241,.4)}
+.btn-s{padding:.9rem 2rem;background:transparent;border:1px solid rgba(99,102,241,.4);border-radius:50px;color:#fff;font-family:var(--fb);font-weight:600;font-size:.95rem;cursor:pointer;text-decoration:none;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-s:hover{background:rgba(99,102,241,.1);border-color:var(--p);transform:translateY(-3px);box-shadow:var(--gp)}
+.scroll-ind{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.4rem;color:var(--t3);font-size:.75rem;font-family:var(--fm);animation:sb 2.5s ease-in-out infinite}
+@keyframes sb{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
+.scroll-line{width:1px;height:55px;background:linear-gradient(to bottom,var(--p),transparent)}
+
+/* CODE SNIPPETS */
+.cs{position:absolute;z-index:1;pointer-events:none;background:rgba(8,8,24,.75);backdrop-filter:blur(8px);border:1px solid rgba(99,102,241,.18);border-radius:10px;padding:.7rem 1rem;font-family:var(--fm);font-size:.72rem;color:var(--a);line-height:1.6;animation:floatcs 7s ease-in-out infinite}
+.cs1{top:18%;left:3%;animation-delay:0s}
+.cs2{bottom:22%;right:3%;animation-delay:-2.5s}
+.cs3{top:55%;left:2%;animation-delay:-4.5s;display:block}
+@keyframes floatcs{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-18px) rotate(1deg)}}
+@media(max-width:900px){.cs{display:none}}
+
+/* SECTION BASE */
+section{padding:6rem 2rem;position:relative}
+.container{max-width:1180px;margin:0 auto}
+.stag{opacity:0;transform:translateY(40px);transition:all .9s cubic-bezier(.16,1,.3,1)}
+.stag.vis{opacity:1;transform:translateY(0)}
+.stag-l{opacity:0;transform:translateX(-40px);transition:all .9s cubic-bezier(.16,1,.3,1)}
+.stag-l.vis{opacity:1;transform:translateX(0)}
+.stag-r{opacity:0;transform:translateX(40px);transition:all .9s cubic-bezier(.16,1,.3,1)}
+.stag-r.vis{opacity:1;transform:translateX(0)}
+.sec-tag{display:inline-block;font-family:var(--fm);font-size:.78rem;color:var(--s);letter-spacing:3px;text-transform:uppercase;margin-bottom:.8rem}
+.sec-title{font-family:var(--fh);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;margin-bottom:.8rem;background:linear-gradient(135deg,#fff,#a5b4fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sec-sub{color:var(--t2);font-size:1.05rem;max-width:580px;margin-bottom:4rem;line-height:1.7}
+
+/* BLOB BG */
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.25;pointer-events:none;animation:blobf 10s ease-in-out infinite}
+.blob1{width:600px;height:600px;background:rgba(99,102,241,.18);top:-150px;right:-150px;animation-delay:0s}
+.blob2{width:450px;height:450px;background:rgba(6,182,212,.15);bottom:-100px;left:-100px;animation-delay:-4s}
+@keyframes blobf{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(25px,-25px) scale(1.06)}66%{transform:translate(-20px,20px) scale(.94)}}
+
+/* ABOUT */
+#about{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.av-wrap{position:relative;max-width:400px}
+.av{width:100%;aspect-ratio:1;border-radius:28px;background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(6,182,212,.1));border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:7rem;position:relative;overflow:hidden}
+.av::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(99,102,241,.12),transparent);border-radius:28px}
+.av-ring{position:absolute;inset:-3px;border-radius:30px;background:linear-gradient(135deg,var(--p),var(--s),transparent,transparent);opacity:.5;z-index:-1}
+.fl-card{position:absolute;background:rgba(8,8,24,.8);backdrop-filter:blur(16px);border:1px solid var(--gb);border-radius:14px;padding:.9rem 1.2rem;display:flex;align-items:center;gap:.8rem}
+.fl-card.c1{bottom:-18px;right:-18px}
+.fl-card.c2{top:-18px;left:-18px}
+.fl-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.fl-lbl{font-size:.7rem;color:var(--t3)}
+.fl-val{font-size:.88rem;font-weight:600}
+.about-p{color:var(--t2);line-height:1.9;margin-bottom:1.4rem;font-size:.98rem}
+.about-p strong{color:var(--s)}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.astat{background:var(--glass);border:1px solid var(--gb);border-radius:16px;padding:1.2rem;text-align:center;transition:all .3s;cursor:default}
+.astat:hover{border-color:rgba(99,102,241,.4);box-shadow:var(--gp);transform:translateY(-3px)}
+.astat-n{font-family:var(--fh);font-size:1.9rem;font-weight:700;background:linear-gradient(135deg,var(--p),var(--s));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.astat-l{font-size:.72rem;color:var(--t3);margin-top:.3rem}
+
+/* EXPERIENCE */
+#experience{background:var(--bg)}
+.tl{position:relative;padding-left:2rem}
+.tl::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--p),var(--s),transparent)}
+.tl-item{position:relative;padding:0 0 3rem 2.5rem}
+.tl-dot{position:absolute;left:-1.55rem;top:.3rem;width:16px;height:16px;border-radius:50%;background:var(--p);border:3px solid var(--bg);box-shadow:0 0 20px rgba(99,102,241,.6)}
+.tl-dot.live{background:var(--a);box-shadow:0 0 20px rgba(16,185,129,.7);animation:bpulse 2s infinite}
+.tl-card{background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--gb);border-radius:20px;padding:2rem;transition:all .3s;position:relative;overflow:hidden}
+.tl-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(to bottom,var(--p),var(--s))}
+.tl-card:hover{border-color:rgba(99,102,241,.35);box-shadow:0 20px 60px rgba(0,0,0,.3);transform:translateX(4px)}
+.tl-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:.8rem}
+.tl-role{font-family:var(--fh);font-size:1.05rem;font-weight:700}
+.tl-co{color:var(--s);font-weight:600;font-size:.9rem;margin-top:.2rem}
+.tl-date{padding:.3rem .9rem;border-radius:50px;font-size:.78rem;font-family:var(--fm);white-space:nowrap;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);color:var(--p)}
+.tl-date.now{background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.3);color:var(--a)}
+.tl-list{list-style:none;margin-top:.8rem}
+.tl-list li{color:var(--t2);font-size:.92rem;padding:.28rem 0 .28rem 1.4rem;position:relative}
+.tl-list li::before{content:'▸';position:absolute;left:0;color:var(--p)}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
+.tag{padding:.22rem .7rem;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);border-radius:50px;font-size:.73rem;color:var(--p);font-family:var(--fm)}
+
+/* PROJECTS */
+#projects{background:var(--bg2)}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.8rem}
+.proj-card{background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--gb);border-radius:22px;padding:2rem;transition:all .4s;position:relative;overflow:hidden;cursor:default}
+.proj-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(99,102,241,.06),transparent);opacity:0;transition:opacity .3s;border-radius:22px}
+.proj-card:hover::after{opacity:1}
+.proj-card:hover{border-color:rgba(99,102,241,.35);box-shadow:0 30px 80px rgba(0,0,0,.4);transform:translateY(-8px)}
+.proj-num{position:absolute;top:1.5rem;right:1.5rem;font-family:var(--fh);font-size:2.8rem;font-weight:900;color:rgba(255,255,255,.03)}
+.proj-ico{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.7rem;margin-bottom:1.4rem}
+.proj-title{font-family:var(--fh);font-size:1.05rem;font-weight:700;margin-bottom:.3rem}
+.proj-sub{color:var(--s);font-size:.8rem;margin-bottom:.9rem;font-family:var(--fm)}
+.proj-desc{color:var(--t2);font-size:.9rem;line-height:1.7;margin-bottom:1.3rem}
+.proj-tech{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.ftag{padding:.2rem .6rem;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);border-radius:6px;font-size:.72rem;color:var(--a)}
+
+/* SKILLS */
+#skills{background:var(--bg)}
+.sk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.8rem}
+.sk-cat{background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--gb);border-radius:22px;padding:1.8rem;transition:all .3s}
+.sk-cat:hover{border-color:rgba(99,102,241,.35);box-shadow:var(--gp);transform:translateY(-4px)}
+.sk-head{display:flex;align-items:center;gap:.9rem;margin-bottom:1.3rem}
+.sk-ico{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.sk-name{font-family:var(--fh);font-size:.95rem;font-weight:700}
+.sk-items{display:flex;flex-wrap:wrap;gap:.5rem}
+.sk-item{padding:.35rem .85rem;border-radius:50px;font-size:.8rem;font-weight:500;border:1px solid;transition:all .3s;cursor:default}
+.sk-item:hover{transform:translateY(-2px);box-shadow:0 5px 15px rgba(0,0,0,.3)}
+
+/* EDUCATION */
+#education{background:var(--bg2)}
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+.edu-card{background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--gb);border-radius:22px;padding:2rem;position:relative;overflow:hidden;transition:all .3s}
+.edu-card::after{content:'';position:absolute;top:-60px;right:-60px;width:180px;height:180px;background:radial-gradient(circle,rgba(99,102,241,.1),transparent);border-radius:50%}
+.edu-card:hover{border-color:rgba(99,102,241,.35);transform:translateY(-5px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.edu-ico{font-size:2.8rem;margin-bottom:1rem}
+.edu-deg{font-family:var(--fh);font-size:1rem;font-weight:700;margin-bottom:.3rem}
+.edu-field{color:var(--s);font-size:.88rem;margin-bottom:.4rem}
+.edu-school{color:var(--t2);font-size:.88rem;margin-bottom:1rem}
+.edu-yr{display:inline-block;padding:.28rem .8rem;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:50px;font-size:.78rem;color:var(--p);font-family:var(--fm)}
+
+/* FUN FACTS */
+#facts{background:var(--bg)}
+.fact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.8rem}
+.fact-card{background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--gb);border-radius:22px;padding:2rem;text-align:center;transition:all .3s;cursor:default}
+.fact-card:hover{border-color:rgba(99,102,241,.4);box-shadow:var(--gp);transform:translateY(-8px) scale(1.02)}
+.fact-ico{font-size:2.4rem;margin-bottom:.8rem}
+.fact-n{font-family:var(--fh);font-size:2.4rem;font-weight:900;background:linear-gradient(135deg,var(--p),var(--s));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.fact-l{color:var(--t2);font-size:.85rem;margin-top:.4rem}
+
+/* CONTACT */
+#contact{background:var(--bg2)}
+.ct-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem}
+.ct-title{font-family:var(--fh);font-size:1.4rem;margin-bottom:1rem}
+.ct-para{color:var(--t2);line-height:1.8;margin-bottom:2rem;font-size:.96rem}
+.ct-links{display:flex;flex-direction:column;gap:.9rem}
+.ct-link{display:flex;align-items:center;gap:1rem;padding:.9rem 1.3rem;background:var(--glass);border:1px solid var(--gb);border-radius:14px;text-decoration:none;color:var(--t1);transition:all .3s}
+.ct-link:hover{border-color:var(--p);box-shadow:var(--gp);transform:translateX(5px)}
+.ct-link-ico{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ct-lbl{font-size:.72rem;color:var(--t3)}
+.ct-val{font-size:.88rem;font-weight:600}
+.ct-form{background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--gb);border-radius:22px;padding:2.2rem}
+.fg{margin-bottom:1.3rem}
+.fg label{display:block;color:var(--t2);font-size:.88rem;margin-bottom:.5rem}
+.fg input,.fg textarea{width:100%;padding:.85rem 1.1rem;background:rgba(255,255,255,.03);border:1px solid var(--gb);border-radius:11px;color:var(--t1);font-family:var(--fb);font-size:.93rem;transition:all .3s;outline:none;resize:vertical}
+.fg input:focus,.fg textarea:focus{border-color:var(--p);box-shadow:0 0 0 3px rgba(99,102,241,.12)}
+.fg textarea{min-height:140px}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 2rem;text-align:center}
+.ft-logo{font-family:var(--fh);font-size:1.5rem;font-weight:900;background:linear-gradient(135deg,var(--p),var(--s));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.8rem}
+.ft-desc{color:var(--t3);font-size:.88rem;max-width:380px;margin:0 auto 1.5rem}
+.ft-social{display:flex;justify-content:center;gap:.8rem;margin-bottom:1.5rem}
+.ft-social a{width:42px;height:42px;border-radius:11px;background:var(--glass);border:1px solid var(--gb);display:flex;align-items:center;justify-content:center;color:var(--t2);text-decoration:none;font-size:1rem;transition:all .3s}
+.ft-social a:hover{border-color:var(--p);color:var(--p);box-shadow:var(--gp);transform:translateY(-3px)}
+.ft-copy{color:var(--t3);font-size:.85rem}
+.ft-copy span{color:var(--p)}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — COMPREHENSIVE MOBILE FIXES
+   ═══════════════════════════════════════ */
+
+/* ── Tablet (≤1024px) ── */
+@media(max-width:1024px){
+  .about-grid{grid-template-columns:1fr;gap:3rem}
+  .av-wrap{max-width:360px;margin:0 auto}
+  /* bring floating cards inward so they don't escape the wrapper */
+  .fl-card.c1{bottom:-10px;right:0}
+  .fl-card.c2{top:-10px;left:0}
+  .ct-grid{grid-template-columns:1fr;gap:2.5rem}
+  .proj-grid{grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr))}
+  .sk-grid{grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr))}
+}
+
+/* ── Large mobile (≤768px) ── */
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  nav{padding:1rem 1.2rem}
+  section{padding:4rem 1.2rem}
+  .proj-grid{grid-template-columns:1fr}
+  .sk-grid{grid-template-columns:1fr}
+  .fact-grid{grid-template-columns:repeat(3,1fr)}
+  .about-stats{grid-template-columns:repeat(3,1fr)}
+  .tl{padding-left:1.5rem}
+  .tl-item{padding:0 0 2.5rem 2rem}
+  .tl-dot{left:-1.3rem}
+  .edu-grid{grid-template-columns:1fr}
+}
+
+/* ── Small mobile (≤480px) ── */
+@media(max-width:480px){
+  nav{padding:.85rem 1rem}
+  section{padding:3rem 1rem}
+
+  /* Hero */
+  .hero-inner{padding:1rem}
+  .hero-badge{font-size:.68rem;padding:.32rem .8rem;gap:.4rem}
+  .hero-name{font-size:clamp(1.75rem,7vw,2.2rem);line-height:1.15}
+  .hero-subtitle{font-size:1rem;min-height:1.8rem}
+  .hero-desc{font-size:.9rem;margin-bottom:2rem}
+  .hero-btns{flex-direction:column;align-items:stretch;gap:.75rem}
+  .btn-p,.btn-s{justify-content:center;padding:.85rem 1.5rem;font-size:.9rem}
+
+  /* About */
+  .fl-card{display:none} /* floating cards clip on narrow screens */
+  .av-wrap{max-width:260px}
+  .about-stats{grid-template-columns:1fr 1fr}
+  .astat{padding:.9rem .7rem}
+  .astat-n{font-size:1.5rem}
+  .astat-l{font-size:.68rem}
+
+  /* Timeline */
+  .tl{padding-left:1.1rem}
+  .tl-item{padding:0 0 2rem 1.7rem}
+  .tl-dot{left:-1.1rem;width:13px;height:13px}
+  .tl-card{padding:1.2rem 1rem}
+  .tl-head{flex-direction:column;align-items:flex-start;gap:.4rem}
+  .tl-role{font-size:.9rem}
+  .tl-co{font-size:.82rem}
+  .tl-list li{font-size:.85rem}
+
+  /* Projects */
+  .proj-card{padding:1.4rem 1.2rem}
+  .proj-num{font-size:2rem;top:1rem;right:1rem}
+  .proj-ico{width:48px;height:48px;font-size:1.4rem;margin-bottom:1rem}
+
+  /* Skills */
+  .sk-cat{padding:1.3rem}
+  .sk-item{font-size:.76rem;padding:.3rem .7rem}
+
+  /* Facts */
+  .fact-grid{grid-template-columns:1fr 1fr}
+  .fact-card{padding:1.4rem 1rem}
+  .fact-n{font-size:2rem}
+  .fact-l{font-size:.8rem}
+
+  /* Contact */
+  .ct-link{gap:.7rem;padding:.75rem .9rem}
+  .ct-link-ico{width:36px;height:36px;font-size:1rem;flex-shrink:0}
+  .ct-val{font-size:.8rem;word-break:break-all}
+  .ct-form{padding:1.4rem 1.1rem}
+
+  /* General */
+  .sec-title{font-size:clamp(1.5rem,6vw,2rem)}
+  .sec-sub{font-size:.92rem;margin-bottom:2.5rem}
+  .toast{right:.8rem;left:.8rem;text-align:center;font-size:.85rem}
+}
+
+/* ── XS / very small (≤360px) ── */
+@media(max-width:360px){
+  nav{padding:.75rem .75rem}
+  .nav-logo{font-size:1.1rem}
+  .hero-name{font-size:1.5rem}
+  .hero-badge{font-size:.62rem;padding:.28rem .65rem}
+  .hero-desc{font-size:.85rem}
+  .about-stats{grid-template-columns:1fr}
+  .tl{padding-left:.9rem}
+  .tl-item{padding:0 0 1.8rem 1.4rem}
+  .tl-dot{left:-.95rem;width:12px;height:12px}
+  .tl-card{padding:1rem .9rem}
+  .fact-grid{grid-template-columns:1fr 1fr}
+  .fact-card{padding:1.1rem .8rem}
+  .fact-n{font-size:1.7rem}
+  .ct-title{font-size:1.15rem}
+  footer{padding:2rem 1rem}
+}
+
+/* MISC */
+.noise-overlay{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.35;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.06'/%3E%3C/svg%3E")}
+.toast{position:fixed;bottom:2rem;right:2rem;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.4);border-radius:12px;padding:1rem 1.5rem;color:#fff;font-size:.9rem;z-index:9999;opacity:0;transform:translateY(20px);transition:all .4s;pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+
+/* ══════════════════════════════════════════
+   MOBILE HERO — lightweight CSS bg
+   Hidden on desktop, shown on mobile
+   ══════════════════════════════════════════ */
+#mobile-bg{
+  display:none;position:absolute;inset:0;overflow:hidden;
+  z-index:0;pointer-events:none;
+}
+#mobile-bg::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 95% 55% at 50% 20%,rgba(99,102,241,.22) 0%,transparent 65%),
+    radial-gradient(ellipse 55% 45% at 88% 78%,rgba(6,182,212,.16) 0%,transparent 55%),
+    radial-gradient(ellipse 45% 50% at 12% 82%,rgba(168,85,247,.12) 0%,transparent 55%);
+  animation:mbgp 9s ease-in-out infinite alternate;
+}
+@keyframes mbgp{from{opacity:.5;transform:scale(1)}to{opacity:1;transform:scale(1.07)}}
+.mob-dot{
+  position:absolute;border-radius:50%;
+  animation:mdotf var(--d,4s) ease-in-out infinite alternate;
+  animation-delay:var(--dl,0s);
+}
+@keyframes mdotf{
+  from{transform:translate(0,0);opacity:.3}
+  to{transform:translate(var(--tx,10px),var(--ty,10px));opacity:.8}
+}
+
+/* ══ TOUCH TARGETS — min 44×44 px ══ */
+.btn-p,.btn-s{min-height:44px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.nav-cta{min-height:44px;display:inline-flex;align-items:center;touch-action:manipulation}
+.ct-link{min-height:52px;-webkit-tap-highlight-color:transparent}
+.ft-social a{min-width:44px;min-height:44px}
+.mob-menu a{min-height:52px;display:flex;align-items:center;justify-content:center;width:100%;padding:0 2rem}
+.hamburger{min-width:44px;min-height:44px;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent}
+.hamburger span{pointer-events:none}
+
+/* ══ OVERFLOW GUARD — every section clips blobs ══ */
+#about,#experience,#projects,#skills,#education,#facts,#contact{overflow-x:hidden}
+.tl,.proj-grid,.sk-grid,.fact-grid,.edu-grid,.about-grid,.ct-grid{max-width:100%}
+
+/* ══ HOVER:NONE — disable hover-only transforms on touch ══
+   (matches iOS, Android, anything without a mouse pointer)    */
+@media(hover:none){
+  /* Kill 3D tilt / translateY on project cards */
+  .proj-card:hover{transform:none;box-shadow:none;border-color:var(--gb)}
+  .proj-card:active{border-color:rgba(99,102,241,.45);box-shadow:0 0 25px rgba(99,102,241,.18);transition:all .15s}
+  /* Kill translateY lifts on cards */
+  .tl-card:hover{transform:none}
+  .sk-cat:hover{transform:none}
+  .edu-card:hover{transform:none}
+  .fact-card:hover{transform:none;box-shadow:none}
+  .astat:hover{transform:none;box-shadow:none}
+  .ct-link:hover{transform:none}
+  .btn-p:hover{transform:none}
+  .btn-s:hover{transform:none}
+  .ft-social a:hover{transform:none}
+  /* Buttons still get active feedback */
+  .btn-p:active{opacity:.85}
+  .btn-s:active{opacity:.85}
+}
+
+/* ══ MOBILE-ONLY OVERRIDES (≤767px) ══ */
+@media(max-width:767px){
+  /* Show CSS hero bg, hide Three.js canvas */
+  #cv{display:none!important}
+  #mobile-bg{display:block}
+
+  /* Hero — prevent long name from overflowing */
+  .hero-name{
+    font-size:clamp(1.6rem,7.5vw,2.2rem);
+    word-break:break-word;
+    hyphens:auto;
+    letter-spacing:.5px;
+  }
+  /* Badge — allow text to wrap gracefully */
+  .hero-badge{
+    max-width:calc(100vw - 4rem);
+    flex-wrap:wrap;
+    justify-content:center;
+    text-align:center;
+    gap:.4rem .6rem;
+    white-space:normal;
+  }
+  /* Keep scroll indicator visible */
+  .scroll-ind{display:none} /* cleaner on mobile — saves vertical space */
+
+  /* Timeline — avoid card left-edge clipping */
+  .tl{padding-left:1.4rem;overflow-x:hidden}
+  .tl-item{padding-right:.5rem}
+  /* Timeline header: role on top, date badge below */
+  .tl-head{flex-direction:column;align-items:flex-start;gap:.45rem}
+  /* Date badge: don't let it push wider than card */
+  .tl-date{align-self:flex-start;white-space:normal;text-align:left}
+
+  /* Projects — force single column, no horizontal scroll */
+  .proj-grid{grid-template-columns:1fr!important;gap:1.2rem}
+
+  /* Skills — single column */
+  .sk-grid{grid-template-columns:1fr!important;gap:1.2rem}
+
+  /* Facts — 2-col then 1-col handled by 480 breakpoint */
+  .fact-grid{grid-template-columns:repeat(2,1fr);gap:1.2rem}
+
+  /* About floating badges: hide on single-column layout */
+  .fl-card{display:none}
+
+  /* Contact: stack info above form, email wraps */
+  .ct-grid{grid-template-columns:1fr;gap:2rem}
+  .ct-val{word-break:break-all;font-size:.83rem}
+
+  /* Education language cards: full width */
+  [style*="flex:0 0 auto"]{flex:1 1 auto!important;min-width:0}
+}
+</style>
+</head>
+<body>
+
+<!-- NOISE -->
+<div class="noise-overlay"></div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✅ Message sent! I'll get back to you soon.</div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-logo">MMK</div>
+  <div class="ld-bar"><div class="ld-fill"></div></div>
+  <div class="ld-txt">Initializing portfolio...</div>
+</div>
+
+<!-- CUSTOM CURSOR -->
+<div id="cur"></div>
+<div id="cur-dot"></div>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mob-menu">
+  <a href="#hero" onclick="closeMob()">Home</a>
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#experience" onclick="closeMob()">Experience</a>
+  <a href="#projects" onclick="closeMob()">Projects</a>
+  <a href="#skills" onclick="closeMob()">Skills</a>
+  <a href="#education" onclick="closeMob()">Education</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">MMK</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire Me</a>
+  <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="cv"></canvas>
+  <!-- Lightweight CSS particle field shown instead of Three.js on mobile -->
+  <div id="mobile-bg" aria-hidden="true"></div>
+  <div class="cs cs1">const ai = new VoiceAgent()<br>ai.connect(vapi, retell)<br>ai.start()</div>
+  <div class="cs cs2">n8n.workflow({<br>&nbsp;&nbsp;trigger: 'webhook',<br>&nbsp;&nbsp;ai: openai<br>})</div>
+  <div class="cs cs3">{% section 'hero' %}<br>{{ shop.name }}</div>
+
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Available for freelance &amp; full-time opportunities
+    </div>
+    <h1 class="hero-name">Muhammad Mustufa Khan</h1>
+    <div class="hero-subtitle">
+      <span id="typed" class="typed-accent"></span>
+    </div>
+    <p class="hero-desc">
+      I build intelligent AI automation systems, high-converting Shopify stores,
+      modern web applications, and Voice AI solutions that help businesses
+      automate workflows and deliver exceptional digital experiences.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-p"><i class="fas fa-rocket"></i> Explore My Work</a>
+      <a href="#contact" class="btn-s"><i class="fas fa-envelope"></i> Contact Me</a>
+      <a href="resume.html" target="_blank" class="btn-s"><i class="fas fa-download"></i> Get Resume</a>
+    </div>
+  </div>
+
+  <div class="scroll-ind">
+    <span>scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="container">
+    <div class="stag">
+      <span class="sec-tag">// who i am</span>
+      <h2 class="sec-title">About Me</h2>
+    </div>
+    <div class="about-grid">
+      <div class="av-wrap stag-l">
+        <div class="av-ring"></div>
+        <div class="av">🤖</div>
+        <div class="fl-card c1">
+          <div class="fl-icon" style="background:rgba(6,182,212,.15);color:#06b6d4"><i class="fas fa-brain"></i></div>
+          <div><div class="fl-lbl">Specialization</div><div class="fl-val">AI + Voice + Shopify</div></div>
+        </div>
+        <div class="fl-card c2">
+          <div class="fl-icon" style="background:rgba(99,102,241,.15);color:#6366f1"><i class="fas fa-map-marker-alt"></i></div>
+          <div><div class="fl-lbl">Location</div><div class="fl-val">Karachi, Pakistan</div></div>
+        </div>
+      </div>
+      <div class="stag-r">
+        <p class="about-p">I am a software developer passionate about combining Artificial Intelligence with modern web development to build scalable digital products. My expertise spans Shopify development, AI workflow automation, Voice AI systems, frontend engineering, and API integrations.</p>
+        <p class="about-p">I enjoy solving real-world business problems through automation, intelligent software, and user-centered design. Currently, I work at <strong>Revera Innovations</strong> where I build Shopify stores, AI automation workflows using n8n, and AI-powered voice agents using Vapi and Retell AI.</p>
+        <p class="about-p">I continuously learn emerging AI technologies including Claude, ChatGPT, OpenAI APIs, Gemini, MCP servers, RAG systems, and modern JavaScript frameworks.</p>
+        <div class="about-stats">
+          <div class="astat"><div class="astat-n cnt" data-t="6">0</div><div class="astat-l">Projects Built</div></div>
+          <div class="astat"><div class="astat-n cnt" data-t="10">0</div><div class="astat-l">AI Workflows</div></div>
+          <div class="astat"><div class="astat-n cnt" data-t="2">0</div><div class="astat-l">Voice Agents</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="stag">
+      <span class="sec-tag">// my journey</span>
+      <h2 class="sec-title">Experience</h2>
+      <p class="sec-sub">Building real-world solutions with AI, Shopify, and modern web technologies.</p>
+    </div>
+    <div class="tl">
+
+      <div class="tl-item stag">
+        <div class="tl-dot live"></div>
+        <div class="tl-card">
+          <div class="tl-head">
+            <div><div class="tl-role">Shopify Developer</div><div class="tl-co">Revera Innovations</div></div>
+            <span class="tl-date now">July 2025 – Present</span>
+          </div>
+          <ul class="tl-list">
+            <li>Developed custom Shopify themes using Liquid templating language</li>
+            <li>Built responsive, conversion-focused eCommerce storefronts</li>
+            <li>Customized sections, templates, and schema for unique brand experiences</li>
+            <li>Optimized website performance and mobile responsiveness</li>
+            <li>Integrated third-party Shopify applications and external APIs</li>
+            <li>Enhanced customer shopping experiences through UX improvements</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Shopify Liquid</span><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">Shopify APIs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item stag">
+        <div class="tl-dot live"></div>
+        <div class="tl-card">
+          <div class="tl-head">
+            <div><div class="tl-role">AI Automation Specialist</div><div class="tl-co">Revera Innovations</div></div>
+            <span class="tl-date now">July 2025 – Present</span>
+          </div>
+          <ul class="tl-list">
+            <li>Built multi-step workflow automations using n8n for business operations</li>
+            <li>Automated repetitive tasks reducing manual effort significantly</li>
+            <li>Integrated AI APIs (OpenAI, Claude, Gemini) into automated workflows</li>
+            <li>Created lead management and CRM automation pipelines</li>
+            <li>Designed scalable webhook-driven business automation systems</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">n8n</span><span class="tag">OpenAI</span><span class="tag">Webhooks</span><span class="tag">REST APIs</span><span class="tag">CRM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item stag">
+        <div class="tl-dot live"></div>
+        <div class="tl-card">
+          <div class="tl-head">
+            <div><div class="tl-role">Voice AI Developer</div><div class="tl-co">Revera Innovations</div></div>
+            <span class="tl-date now">July 2025 – Present</span>
+          </div>
+          <ul class="tl-list">
+            <li>Developed AI Voice Agents using Vapi and Retell AI platforms</li>
+            <li>Built automated customer support voice assistants for businesses</li>
+            <li>Connected AI agents with backend APIs for real-time data access</li>
+            <li>Created automated conversational workflows with natural language understanding</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Vapi</span><span class="tag">Retell AI</span><span class="tag">ElevenLabs</span><span class="tag">n8n</span><span class="tag">APIs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item stag">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-head">
+            <div><div class="tl-role">IT Department Intern</div><div class="tl-co">Engineering Pakistan International Pvt Ltd</div></div>
+            <span class="tl-date">Mar 2024 – Jun 2025</span>
+          </div>
+          <ul class="tl-list">
+            <li>IT troubleshooting and user technical support</li>
+            <li>Report management and professional data entry</li>
+            <li>Cloud storage administration and file organization</li>
+            <li>Office networking setup and maintenance</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="blob blob1" style="opacity:.15"></div>
+  <div class="container">
+    <div class="stag">
+      <span class="sec-tag">// what i've built</span>
+      <h2 class="sec-title">Featured Projects</h2>
+      <p class="sec-sub">AI automation, Shopify development, and full-stack engineering showcased.</p>
+    </div>
+    <div class="proj-grid">
+
+      <div class="proj-card stag" style="transition-delay:.1s">
+        <div class="proj-num">01</div>
+        <div class="proj-ico" style="background:rgba(99,102,241,.15)">💍</div>
+        <div class="proj-title">Elegant Celebrations</div>
+        <div class="proj-sub">Wedding Hall Management System</div>
+        <p class="proj-desc">Complete responsive wedding hall booking platform allowing customers to browse venues, send inquiries, manage reservations, and interact with a full admin dashboard.</p>
+        <div class="proj-tech">
+          <span class="tag">ASP.NET Web API</span><span class="tag">React</span><span class="tag">SQL Server</span><span class="tag">Bootstrap</span>
+        </div>
+        <div class="tags">
+          <span class="ftag">Authentication</span><span class="ftag">Hall Booking</span><span class="ftag">Admin Dashboard</span><span class="ftag">Inquiry Mgmt</span>
+        </div>
+      </div>
+
+      <div class="proj-card stag" style="transition-delay:.2s">
+        <div class="proj-num">02</div>
+        <div class="proj-ico" style="background:rgba(150,191,72,.15)">🛒</div>
+        <div class="proj-title">Brandzone</div>
+        <div class="proj-sub">Customized Shopify Store</div>
+        <p class="proj-desc">Modern Shopify storefront with custom UI, reusable sections, optimized product pages, and fully responsive layouts for enhanced shopping experiences.</p>
+        <div class="proj-tech">
+          <span class="tag">Shopify Liquid</span><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span>
+        </div>
+        <div class="tags">
+          <span class="ftag">Custom Theme</span><span class="ftag">Responsive</span><span class="ftag">Performance</span>
+        </div>
+      </div>
+
+      <div class="proj-card stag" style="transition-delay:.3s">
+        <div class="proj-num">03</div>
+        <div class="proj-ico" style="background:rgba(6,182,212,.15)">🤖</div>
+        <div class="proj-title">Shopify AI Agent</div>
+        <div class="proj-sub">AI-Powered Store Management</div>
+        <p class="proj-desc">AI-powered Shopify assistant integrating OpenAI with Shopify APIs and Telegram via n8n workflows for fully automated store management and customer service.</p>
+        <div class="proj-tech">
+          <span class="tag">n8n</span><span class="tag">OpenAI</span><span class="tag">Shopify API</span><span class="tag">Telegram</span><span class="tag">Webhooks</span>
+        </div>
+        <div class="tags">
+          <span class="ftag">AI-Powered</span><span class="ftag">Automated</span><span class="ftag">Real-time</span>
+        </div>
+      </div>
+
+      <div class="proj-card stag" style="transition-delay:.1s">
+        <div class="proj-num">04</div>
+        <div class="proj-ico" style="background:rgba(245,158,11,.15)">🕷️</div>
+        <div class="proj-title">Apify + n8n Pipeline</div>
+        <div class="proj-sub">Automated Web Scraping</div>
+        <p class="proj-desc">Automated web scraping pipelines using Apify integrated with n8n to collect structured business data at scale with automatic processing and storage workflows.</p>
+        <div class="proj-tech">
+          <span class="tag">Apify</span><span class="tag">n8n</span><span class="tag">JavaScript</span><span class="tag">Webhooks</span>
+        </div>
+        <div class="tags">
+          <span class="ftag">Data Pipeline</span><span class="ftag">Scalable</span><span class="ftag">Automated</span>
+        </div>
+      </div>
+
+      <div class="proj-card stag" style="transition-delay:.2s">
+        <div class="proj-num">05</div>
+        <div class="proj-ico" style="background:rgba(16,185,129,.15)">🎙️</div>
+        <div class="proj-title">Dental Clinic Voice Agent</div>
+        <div class="proj-sub">AI Receptionist System</div>
+        <p class="proj-desc">AI-powered receptionist capable of booking appointments, answering FAQs, and handling customer interactions 24/7 using advanced conversational voice AI.</p>
+        <div class="proj-tech">
+          <span class="tag">Vapi</span><span class="tag">Retell AI</span><span class="tag">ElevenLabs</span><span class="tag">n8n</span>
+        </div>
+        <div class="tags">
+          <span class="ftag">Voice AI</span><span class="ftag">Appointments</span><span class="ftag">24/7</span>
+        </div>
+      </div>
+
+      <div class="proj-card stag" style="transition-delay:.3s">
+        <div class="proj-num">06</div>
+        <div class="proj-ico" style="background:rgba(168,85,247,.15)">🧠</div>
+        <div class="proj-title">RAG AI Agent</div>
+        <div class="proj-sub">Retrieval-Augmented Generation</div>
+        <p class="proj-desc">RAG system searching company documents in Google Drive using vector embeddings and OpenAI for intelligent Q&amp;A over private business data and knowledge bases.</p>
+        <div class="proj-tech">
+          <span class="tag">n8n</span><span class="tag">OpenAI</span><span class="tag">Pinecone</span><span class="tag">Google Drive</span>
+        </div>
+        <div class="tags">
+          <span class="ftag">Vector DB</span><span class="ftag">RAG</span><span class="ftag">Document AI</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="stag">
+      <span class="sec-tag">// what i know</span>
+      <h2 class="sec-title">Skills &amp; Technologies</h2>
+      <p class="sec-sub">A comprehensive toolkit spanning AI, automation, Shopify, and full-stack development.</p>
+    </div>
+    <div class="sk-grid">
+
+      <div class="sk-cat stag" style="transition-delay:.05s">
+        <div class="sk-head">
+          <div class="sk-ico" style="background:rgba(150,191,72,.15);color:#96bf48">🛒</div>
+          <div class="sk-name">Shopify</div>
+        </div>
+        <div class="sk-items">
+          <span class="sk-item" style="border-color:rgba(150,191,72,.3);color:#96bf48;background:rgba(150,191,72,.08)">Shopify Dev</span>
+          <span class="sk-item" style="border-color:rgba(150,191,72,.3);color:#96bf48;background:rgba(150,191,72,.08)">Theme Customization</span>
+          <span class="sk-item" style="border-color:rgba(150,191,72,.3);color:#96bf48;background:rgba(150,191,72,.08)">Liquid</span>
+          <span class="sk-item" style="border-color:rgba(150,191,72,.3);color:#96bf48;background:rgba(150,191,72,.08)">Store Setup</span>
+          <span class="sk-item" style="border-color:rgba(150,191,72,.3);color:#96bf48;background:rgba(150,191,72,.08)">Product Optimization</span>
+          <span class="sk-item" style="border-color:rgba(150,191,72,.3);color:#96bf48;background:rgba(150,191,72,.08)">Shopify APIs</span>
+        </div>
+      </div>
+
+      <div class="sk-cat stag" style="transition-delay:.1s">
+        <div class="sk-head">
+          <div class="sk-ico" style="background:rgba(99,102,241,.15);color:#6366f1">💻</div>
+          <div class="sk-name">Frontend</div>
+        </div>
+        <div class="sk-items">
+          <span class="sk-item" style="border-color:rgba(99,102,241,.3);color:#6366f1;background:rgba(99,102,241,.08)">HTML5</span>
+          <span class="sk-item" style="border-color:rgba(99,102,241,.3);color:#6366f1;background:rgba(99,102,241,.08)">CSS3</span>
+          <span class="sk-item" style="border-color:rgba(99,102,241,.3);color:#6366f1;background:rgba(99,102,241,.08)">JavaScript</span>
+          <span class="sk-item" style="border-color:rgba(99,102,241,.3);color:#6366f1;background:rgba(99,102,241,.08)">Bootstrap</span>
+          <span class="sk-item" style="border-color:rgba(99,102,241,.3);color:#6366f1;background:rgba(99,102,241,.08)">React</span>
+          <span class="sk-item" style="border-color:rgba(99,102,241,.3);color:#6366f1;background:rgba(99,102,241,.08)">Responsive Design</span>
+        </div>
+      </div>
+
+      <div class="sk-cat stag" style="transition-delay:.15s">
+        <div class="sk-head">
+          <div class="sk-ico" style="background:rgba(6,182,212,.15);color:#06b6d4">⚡</div>
+          <div class="sk-name">AI Automation</div>
+        </div>
+        <div class="sk-items">
+          <span class="sk-item" style="border-color:rgba(6,182,212,.3);color:#06b6d4;background:rgba(6,182,212,.08)">n8n</span>
+          <span class="sk-item" style="border-color:rgba(6,182,212,.3);color:#06b6d4;background:rgba(6,182,212,.08)">AI Agents</span>
+          <span class="sk-item" style="border-color:rgba(6,182,212,.3);color:#06b6d4;background:rgba(6,182,212,.08)">Workflow Automation</span>
+          <span class="sk-item" style="border-color:rgba(6,182,212,.3);color:#06b6d4;background:rgba(6,182,212,.08)">OpenAI</span>
+          <span class="sk-item" style="border-color:rgba(6,182,212,.3);color:#06b6d4;background:rgba(6,182,212,.08)">API Integrations</span>
+          <span class="sk-item" style="border-color:rgba(6,182,212,.3);color:#06b6d4;background:rgba(6,182,212,.08)">Webhooks</span>
+        </div>
+      </div>
+
+      <div class="sk-cat stag" style="transition-delay:.2s">
+        <div class="sk-head">
+          <div class="sk-ico" style="background:rgba(16,185,129,.15);color:#10b981">🎙️</div>
+          <div class="sk-name">Voice AI</div>
+        </div>
+        <div class="sk-items">
+          <span class="sk-item" style="border-color:rgba(16,185,129,.3);color:#10b981;background:rgba(16,185,129,.08)">Vapi</span>
+          <span class="sk-item" style="border-color:rgba(16,185,129,.3);color:#10b981;background:rgba(16,185,129,.08)">Retell AI</span>
+          <span class="sk-item" style="border-color:rgba(16,185,129,.3);color:#10b981;background:rgba(16,185,129,.08)">ElevenLabs</span>
+          <span class="sk-item" style="border-color:rgba(16,185,129,.3);color:#10b981;background:rgba(16,185,129,.08)">Conversational AI</span>
+          <span class="sk-item" style="border-color:rgba(16,185,129,.3);color:#10b981;background:rgba(16,185,129,.08)">Voice Agents</span>
+        </div>
+      </div>
+
+      <div class="sk-cat stag" style="transition-delay:.25s">
+        <div class="sk-head">
+          <div class="sk-ico" style="background:rgba(245,158,11,.15);color:#f59e0b">⚙️</div>
+          <div class="sk-name">Backend</div>
+        </div>
+        <div class="sk-items">
+          <span class="sk-item" style="border-color:rgba(245,158,11,.3);color:#f59e0b;background:rgba(245,158,11,.08)">ASP.NET Web API</span>
+          <span class="sk-item" style="border-color:rgba(245,158,11,.3);color:#f59e0b;background:rgba(245,158,11,.08)">REST APIs</span>
+          <span class="sk-item" style="border-color:rgba(245,158,11,.3);color:#f59e0b;background:rgba(245,158,11,.08)">SQL Server</span>
+        </div>
+      </div>
+
+      <div class="sk-cat stag" style="transition-delay:.3s">
+        <div class="sk-head">
+          <div class="sk-ico" style="background:rgba(168,85,247,.15);color:#a855f7">🧠</div>
+          <div class="sk-name">AI Technologies</div>
+        </div>
+        <div class="sk-items">
+          <span class="sk-item" style="border-color:rgba(168,85,247,.3);color:#a855f7;background:rgba(168,85,247,.08)">OpenAI</span>
+          <span class="sk-item" style="border-color:rgba(168,85,247,.3);color:#a855f7;background:rgba(168,85,247,.08)">Claude</span>
+          <span class="sk-item" style="border-color:rgba(168,85,247,.3);color:#a855f7;background:rgba(168,85,247,.08)">ChatGPT</span>
+          <span class="sk-item" style="border-color:rgba(168,85,247,.3);color:#a855f7;background:rgba(168,85,247,.08)">Gemini</span>
+          <span class="sk-item" style="border-color:rgba(168,85,247,.3);color:#a855f7;background:rgba(168,85,247,.08)">RAG</span>
+          <span class="sk-item" style="border-color:rgba(168,85,247,.3);color:#a855f7;background:rgba(168,85,247,.08)">Pinecone</span>
+          <span class="sk-item" style="border-color:rgba(168,85,247,.3);color:#a855f7;background:rgba(168,85,247,.08)">Prompt Engineering</span>
+        </div>
+      </div>
+
+      <div class="sk-cat stag" style="transition-delay:.35s">
+        <div class="sk-head">
+          <div class="sk-ico" style="background:rgba(239,68,68,.15);color:#ef4444">🛠️</div>
+          <div class="sk-name">Dev Tools</div>
+        </div>
+        <div class="sk-items">
+          <span class="sk-item" style="border-color:rgba(239,68,68,.3);color:#ef4444;background:rgba(239,68,68,.08)">Git</span>
+          <span class="sk-item" style="border-color:rgba(239,68,68,.3);color:#ef4444;background:rgba(239,68,68,.08)">GitHub</span>
+          <span class="sk-item" style="border-color:rgba(239,68,68,.3);color:#ef4444;background:rgba(239,68,68,.08)">VS Code</span>
+          <span class="sk-item" style="border-color:rgba(239,68,68,.3);color:#ef4444;background:rgba(239,68,68,.08)">Postman</span>
+          <span class="sk-item" style="border-color:rgba(239,68,68,.3);color:#ef4444;background:rgba(239,68,68,.08)">Shopify Partner</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="stag">
+      <span class="sec-tag">// my learning</span>
+      <h2 class="sec-title">Education</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card stag" style="transition-delay:.1s">
+        <div class="edu-ico">🎓</div>
+        <div class="edu-deg">Diploma of Associate Engineering</div>
+        <div class="edu-field">Software Engineering</div>
+        <div class="edu-school"><i class="fas fa-university" style="margin-right:.4rem;color:var(--p)"></i>Aligarh Institute of Technology</div>
+        <span class="edu-yr">2023 – 2026</span>
+      </div>
+      <div class="edu-card stag" style="transition-delay:.2s">
+        <div class="edu-ico">📚</div>
+        <div class="edu-deg">Matriculation</div>
+        <div class="edu-field">Computer Science</div>
+        <div class="edu-school"><i class="fas fa-school" style="margin-right:.4rem;color:var(--p)"></i>Sir Syed Children Academy</div>
+        <span class="edu-yr">2020 – 2022</span>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem">
+      <div class="stag" style="margin-bottom:1.5rem">
+        <span class="sec-tag">// languages</span>
+      </div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap">
+        <div class="edu-card stag" style="transition-delay:.1s;flex:0 0 auto;padding:1.2rem 2rem;text-align:center">
+          <div style="font-size:2rem;margin-bottom:.5rem">🇬🇧</div>
+          <div class="edu-deg" style="font-size:.9rem">English</div>
+          <div class="edu-field">Professional</div>
+        </div>
+        <div class="edu-card stag" style="transition-delay:.2s;flex:0 0 auto;padding:1.2rem 2rem;text-align:center">
+          <div style="font-size:2rem;margin-bottom:.5rem">🇵🇰</div>
+          <div class="edu-deg" style="font-size:.9rem">Urdu</div>
+          <div class="edu-field">Native</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUN FACTS -->
+<section id="facts">
+  <div class="blob blob2" style="opacity:.15"></div>
+  <div class="container">
+    <div class="stag">
+      <span class="sec-tag">// by the numbers</span>
+      <h2 class="sec-title">Fun Facts</h2>
+    </div>
+    <div class="fact-grid">
+      <div class="fact-card stag" style="transition-delay:.05s">
+        <div class="fact-ico">📅</div>
+        <div class="fact-n cnt" data-t="3">0</div>
+        <div class="fact-l">Years Learning Tech</div>
+      </div>
+      <div class="fact-card stag" style="transition-delay:.1s">
+        <div class="fact-ico">🚀</div>
+        <div class="fact-n cnt" data-t="6">0</div>
+        <div class="fact-l">Projects Built</div>
+      </div>
+      <div class="fact-card stag" style="transition-delay:.15s">
+        <div class="fact-ico">⚡</div>
+        <div class="fact-n cnt" data-t="10">0</div>
+        <div class="fact-l">AI Workflows Created</div>
+      </div>
+      <div class="fact-card stag" style="transition-delay:.2s">
+        <div class="fact-ico">🎙️</div>
+        <div class="fact-n cnt" data-t="2">0</div>
+        <div class="fact-l">Voice Agents Built</div>
+      </div>
+      <div class="fact-card stag" style="transition-delay:.25s">
+        <div class="fact-ico">☕</div>
+        <div class="fact-n cnt" data-t="500">0</div>
+        <div class="fact-l">Cups of Coffee</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="blob blob1" style="opacity:.12"></div>
+  <div class="container">
+    <div class="stag">
+      <span class="sec-tag">// get in touch</span>
+      <h2 class="sec-title">Contact Me</h2>
+      <p class="sec-sub">Have a project in mind? Let's build something amazing together.</p>
+    </div>
+    <div class="ct-grid">
+      <div class="stag-l">
+        <h3 class="ct-title">Let's Connect</h3>
+        <p class="ct-para">I'm always open to discussing new projects, creative ideas, or opportunities. Whether you need an AI automation system, a Shopify store, or a Voice AI agent — I'm here to help.</p>
+        <div class="ct-links">
+          <a href="mailto:mustufakhan0318@gmail.com" class="ct-link">
+            <div class="ct-link-ico" style="background:rgba(99,102,241,.15);color:#6366f1"><i class="fas fa-envelope"></i></div>
+            <div><div class="ct-lbl">Email</div><div class="ct-val">mustufakhan0318@gmail.com</div></div>
+          </a>
+          <a href="tel:+923182255708" class="ct-link">
+            <div class="ct-link-ico" style="background:rgba(16,185,129,.15);color:#10b981"><i class="fas fa-phone"></i></div>
+            <div><div class="ct-lbl">Phone</div><div class="ct-val">+92 318 2255708</div></div>
+          </a>
+          <a href="https://linkedin.com/in/mustufa-khan-87346b333" target="_blank" class="ct-link">
+            <div class="ct-link-ico" style="background:rgba(6,182,212,.15);color:#06b6d4"><i class="fab fa-linkedin"></i></div>
+            <div><div class="ct-lbl">LinkedIn</div><div class="ct-val">mustufa-khan-87346b333</div></div>
+          </a>
+          <a href="https://github.com/M-Mustufa-Khan" target="_blank" class="ct-link">
+            <div class="ct-link-ico" style="background:rgba(168,85,247,.15);color:#a855f7"><i class="fab fa-github"></i></div>
+            <div><div class="ct-lbl">GitHub</div><div class="ct-val">M-Mustufa-Khan</div></div>
+          </a>
+          <div class="ct-link" style="cursor:default">
+            <div class="ct-link-ico" style="background:rgba(245,158,11,.15);color:#f59e0b"><i class="fas fa-map-marker-alt"></i></div>
+            <div><div class="ct-lbl">Location</div><div class="ct-val">Karachi, Pakistan 🇵🇰</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="stag-r">
+        <form class="ct-form" id="ctform">
+          <div class="fg"><label>Your Name</label><input type="text" name="name" placeholder="John Doe" required></div>
+          <div class="fg"><label>Your Email</label><input type="email" name="email" placeholder="john@example.com" required></div>
+          <div class="fg"><label>Subject</label><input type="text" name="subject" placeholder="AI Automation Project"></div>
+          <div class="fg"><label>Message</label><textarea name="message" placeholder="Tell me about your project..."></textarea></div>
+          <button type="submit" class="btn-p" style="width:100%;justify-content:center;border:none">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo">MMK</div>
+  <p class="ft-desc">Building intelligent systems at the intersection of AI, automation, and modern web development.</p>
+  <div class="ft-social">
+    <a href="https://github.com/M-Mustufa-Khan" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://linkedin.com/in/mustufa-khan-87346b333" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:mustufakhan0318@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+    <a href="tel:+923182255708" title="Phone"><i class="fas fa-phone"></i></a>
+  </div>
+  <p class="ft-copy"><span>Muhammad Mustufa Khan</span> &copy; 2025 &nbsp;·&nbsp; Karachi, Pakistan</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://unpkg.com/three@0.155.0/build/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.16/typed.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+(function(){
+'use strict';
+
+/* ══════════════════════════════════════════
+   DEVICE DETECTION
+   matchMedia is the canonical way to detect
+   viewport width — same breakpoint as CSS.
+   isTouch() catches tablets in landscape that
+   are ≥768px wide but still have no mouse.
+   ══════════════════════════════════════════ */
+const mq = window.matchMedia('(max-width: 767px)');
+const isTouch = () => navigator.maxTouchPoints > 0 || 'ontouchstart' in window;
+const isMobile = () => mq.matches || isTouch();
+
+/* ── LOADER ── */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('gone');
+    // Branch: lightweight CSS bg vs full Three.js scene
+    if (isMobile()) {
+      initMobileHero();
+    } else {
+      initDesktopHero();
+    }
+    initTyped();
+  }, 1600);
+});
+
+/* ══ CUSTOM CURSOR (pointer devices only) ══ */
+if (!isTouch()) {
+  const cur = document.getElementById('cur');
+  const curDot = document.getElementById('cur-dot');
+  let mx = -100, my = -100, cx = -100, cy = -100;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  document.querySelectorAll('a,button,.proj-card,.sk-item,.fact-card').forEach(el => {
+    el.addEventListener('mouseenter', () => cur.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cur.classList.remove('hover'));
+  });
+  (function animCursor(){
+    cx += (mx - cx) * 0.12;
+    cy += (my - cy) * 0.12;
+    cur.style.transform = `translate(${cx - 11}px, ${cy - 11}px)`;
+    curDot.style.transform = `translate(${mx - 2.5}px, ${my - 2.5}px)`;
+    requestAnimationFrame(animCursor);
+  })();
+}
+
+/* ── NAV SCROLL EFFECT ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+/* ── MOBILE MENU ── */
+const ham = document.getElementById('ham');
+const mobMenu = document.getElementById('mob-menu');
+ham.addEventListener('click', () => {
+  ham.classList.toggle('open');
+  mobMenu.classList.toggle('open');
+  document.body.style.overflow = mobMenu.classList.contains('open') ? 'hidden' : '';
+});
+window.closeMob = () => {
+  ham.classList.remove('open');
+  mobMenu.classList.remove('open');
+  document.body.style.overflow = '';
+};
+
+/* ── TYPED.JS ── */
+function initTyped(){
+  new Typed('#typed', {
+    strings: [
+      'Shopify Developer',
+      'AI Automation Specialist',
+      'Voice AI Developer',
+      'Frontend Developer',
+      'AI Full Stack Developer'
+    ],
+    typeSpeed: 60,
+    backSpeed: 35,
+    backDelay: 2200,
+    loop: true,
+    cursorChar: '|'
+  });
+}
+
+/* ── SCROLL REVEAL ──
+   Lower threshold on mobile so elements reveal
+   before the user has to scroll far past them.  */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, {
+  threshold: isMobile() ? 0.06 : 0.12,
+  rootMargin: '0px 0px -30px 0px'
+});
+document.querySelectorAll('.stag,.stag-l,.stag-r').forEach(el => revealObs.observe(el));
+
+/* ── COUNTER ANIMATION ── */
+function animCounter(el){
+  const target = parseInt(el.dataset.t);
+  const dur = 1800;
+  const start = performance.now();
+  const tick = (now) => {
+    const p = Math.min((now - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.floor(ease * target) + (target >= 100 ? '+' : target > 10 ? '+' : '');
+    if (p < 1) requestAnimationFrame(tick);
+    else el.textContent = target + (target >= 10 ? '+' : '');
+  };
+  requestAnimationFrame(tick);
+}
+const cntObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !e.target.dataset.done) {
+      e.target.dataset.done = '1';
+      animCounter(e.target);
+    }
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('.cnt').forEach(el => cntObs.observe(el));
+
+/* ── CONTACT FORM (EmailJS) ──
+   Fill in your 3 EmailJS IDs below after setup.
+   Setup takes 3 minutes at emailjs.com (free).  */
+
+// ── Your EmailJS credentials ──────────────────
+const EJS_SERVICE_ID  = 'service_cssdbo4';
+const EJS_TEMPLATE_ID = 'template_dyffc0g';
+const EJS_PUBLIC_KEY  = 'ukqjPbevNd9Sf3UgN';
+// ─────────────────────────────────────────────
+
+emailjs.init({ publicKey: EJS_PUBLIC_KEY });
+
+document.getElementById('ctform').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const btn  = this.querySelector('button[type="submit"]');
+  const toast = document.getElementById('toast');
+  const originalHTML = btn.innerHTML;
+
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
+  btn.disabled = true;
+
+  const params = {
+    name:    this.querySelector('[name="name"]').value.trim(),
+    email:   this.querySelector('[name="email"]').value.trim(),
+    subject: this.querySelector('[name="subject"]').value.trim() || 'Portfolio Contact',
+    message: this.querySelector('[name="message"]').value.trim()
+  };
+
+  try {
+    const res = await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, params);
+    console.log('EmailJS success:', res);
+    toast.textContent = '✅ Message sent! I\'ll reply soon.';
+    toast.style.background  = 'rgba(16,185,129,.15)';
+    toast.style.borderColor = 'rgba(16,185,129,.4)';
+    this.reset();
+  } catch (err) {
+    console.error('EmailJS error status:', err.status);
+    console.error('EmailJS error text:', err.text);
+    console.error('EmailJS full error:', JSON.stringify(err));
+    toast.textContent = '❌ Error ' + (err.status || '') + ': ' + (err.text || 'Send failed');
+    toast.style.background  = 'rgba(239,68,68,.15)';
+    toast.style.borderColor = 'rgba(239,68,68,.4)';
+  }
+
+  toast.classList.add('show');
+  setTimeout(() => { toast.classList.remove('show'); toast.style.cssText = ''; }, 4500);
+  btn.innerHTML = originalHTML;
+  btn.disabled  = false;
+});
+
+/* ══════════════════════════════════════════
+   MOBILE HERO — CSS particle field
+   28 absolutely-positioned dots animated with
+   CSS custom properties. Zero GPU geometry,
+   no WebGL context, no scroll-jacking.
+   ══════════════════════════════════════════ */
+function initMobileHero(){
+  const bg = document.getElementById('mobile-bg');
+  if (!bg) return;
+  const colors = [
+    'rgba(99,102,241,.6)',
+    'rgba(6,182,212,.55)',
+    'rgba(168,85,247,.5)',
+    'rgba(16,185,129,.45)',
+    'rgba(245,158,11,.35)'
+  ];
+  for (let i = 0; i < 30; i++){
+    const d = document.createElement('div');
+    d.className = 'mob-dot';
+    const size = 2 + Math.random() * 5;
+    d.style.cssText = [
+      `width:${size}px`,
+      `height:${size}px`,
+      `left:${(Math.random() * 96).toFixed(1)}%`,
+      `top:${(Math.random() * 96).toFixed(1)}%`,
+      `background:${colors[i % colors.length]}`,
+      `--d:${(3 + Math.random() * 6).toFixed(2)}s`,
+      `--dl:${-(Math.random() * 6).toFixed(2)}s`,
+      `--tx:${((Math.random() - .5) * 32).toFixed(1)}px`,
+      `--ty:${((Math.random() - .5) * 32).toFixed(1)}px`
+    ].join(';');
+    bg.appendChild(d);
+  }
+}
+
+/* ══════════════════════════════════════════
+   DESKTOP HERO — full Three.js scene
+   Only called when viewport ≥768px AND the
+   device has a pointer (no touch).
+   Mouse-follow camera is only wired when
+   there is actually a mouse (pointer:fine).
+   ══════════════════════════════════════════ */
+function initDesktopHero(){
+  const canvas = document.getElementById('cv');
+  if (!canvas) return;
+
+  const W = () => canvas.parentElement.clientWidth;
+  const H = () => canvas.parentElement.clientHeight;
+
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(W(), H());
+  renderer.setClearColor(0x000000, 0);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(55, W() / H(), 0.1, 100);
+  camera.position.set(0, 0, 7);
+
+  /* ─ PARTICLES — 4500-point neural sphere ─ */
+  const N = 4500;
+  const pos = new Float32Array(N * 3);
+  const col = new Float32Array(N * 3);
+  for (let i = 0; i < N; i++){
+    const theta = Math.random() * Math.PI * 2;
+    const phi   = Math.acos(2 * Math.random() - 1);
+    const r     = 2.8 + (Math.random() - 0.5) * 1.8;
+    const noise = Math.random() * 0.4;
+    pos[i*3]   = (r + noise) * Math.sin(phi) * Math.cos(theta);
+    pos[i*3+1] = (r + noise) * Math.sin(phi) * Math.sin(theta);
+    pos[i*3+2] = (r + noise) * Math.cos(phi);
+    const t = Math.random();
+    col[i*3]   = 0.38 + t * 0.25;
+    col[i*3+1] = 0.38 - t * 0.10;
+    col[i*3+2] = 0.95;
+  }
+  const pg = new THREE.BufferGeometry();
+  pg.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  pg.setAttribute('color',    new THREE.BufferAttribute(col, 3));
+  const pm = new THREE.PointsMaterial({
+    size: 0.025, vertexColors: true,
+    transparent: true, opacity: 0.85, sizeAttenuation: true
+  });
+  const particles = new THREE.Points(pg, pm);
+  scene.add(particles);
+
+  /* ─ CORE GLOW ─ */
+  scene.add(new THREE.Mesh(
+    new THREE.SphereGeometry(1.2, 32, 32),
+    new THREE.MeshBasicMaterial({ color: 0x4f46e5, transparent: true, opacity: 0.04 })
+  ));
+
+  /* ─ WIREFRAME SHAPES ─ */
+  function wire(geo, color, op, x, y, z){
+    const m = new THREE.Mesh(geo,
+      new THREE.MeshBasicMaterial({ color, wireframe: true, transparent: true, opacity: op })
+    );
+    m.position.set(x, y, z);
+    scene.add(m);
+    return m;
+  }
+  const torus = wire(new THREE.TorusGeometry(1.4,.45,7,22),     0x6366f1, .12,  3.5,-1.5,-2);
+  const ico   = wire(new THREE.IcosahedronGeometry(1,0),         0x06b6d4, .14, -3.5, 1.2,-2);
+  const oct   = wire(new THREE.OctahedronGeometry(.9,0),         0x10b981, .13,  1.0, 3.0,-3);
+  const tet   = wire(new THREE.TetrahedronGeometry(.8,0),        0xa855f7, .12, -2.0,-3.0,-2);
+
+  /* ─ ORBITAL RING ─ */
+  const ring = new THREE.Mesh(
+    new THREE.TorusGeometry(3.5,.01,4,80),
+    new THREE.MeshBasicMaterial({ color: 0x6366f1, transparent: true, opacity: 0.15 })
+  );
+  ring.rotation.x = 1.2;
+  scene.add(ring);
+
+  /* ─ MOUSE-FOLLOW CAMERA
+     Only attach listener when device has a fine pointer (actual mouse).
+     window.matchMedia('(pointer:fine)') returns true for mouse,
+     false for touch. This completely prevents scroll-jacking on tablets. ─ */
+  let camTX = 0, camTY = 0;
+  const hasPointer = window.matchMedia('(pointer:fine)').matches;
+  if (hasPointer) {
+    document.addEventListener('mousemove', e => {
+      camTX = (e.clientX / window.innerWidth  - 0.5) * 1.6;
+      camTY = (e.clientY / window.innerHeight - 0.5) * 1.6;
+    }, { passive: true });
+  }
+
+  /* ─ ANIMATION LOOP ─ */
+  let frame = 0, running = true;
+  document.addEventListener('visibilitychange', () => { running = !document.hidden; });
+
+  (function tick(){
+    requestAnimationFrame(tick);
+    if (!running) return;
+    frame++;
+    const t = frame * 0.005;
+
+    particles.rotation.y = t * 0.15;
+    particles.rotation.x = t * 0.05;
+
+    /* Smooth camera follow — only when pointer device active */
+    if (hasPointer) {
+      camera.position.x += (camTX - camera.position.x) * 0.04;
+      camera.position.y += (-camTY - camera.position.y) * 0.04;
+    }
+    camera.lookAt(0, 0, 0);
+
+    torus.rotation.x = t * 0.6;  torus.rotation.y = t * 0.4;
+    ico.rotation.x   = -t * 0.4; ico.rotation.z   = t * 0.3;
+    oct.rotation.y   = t * 0.8;
+    tet.rotation.x   = t * 0.5;  tet.rotation.z   = t * 0.3;
+    ring.rotation.z  = t * 0.1;
+
+    renderer.render(scene, camera);
+  })();
+
+  /* ─ RESIZE ─ */
+  window.addEventListener('resize', () => {
+    camera.aspect = W() / H();
+    camera.updateProjectionMatrix();
+    renderer.setSize(W(), H());
+  }, { passive: true });
+}
+
+})();
+</script>
+</body>
+</html>
